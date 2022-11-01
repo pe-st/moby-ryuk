@@ -219,19 +219,8 @@ func prune(cli *client.Client, deathNote *sync.Map) {
 			return shouldRetry, err
 		})
 
-		try.Do(func(attempt int) (bool, error) {
-			args.Add("dangling", "false")
-			imagesPruneReport, err := cli.ImagesPrune(context.Background(), args)
-			for _, image := range imagesPruneReport.ImagesDeleted {
-				deletedImages[image.Deleted] = true
-			}
-			shouldRetry := attempt < 10
-			if err != nil && shouldRetry {
-				log.Printf("Images pruning has failed, retrying(%d/%d). The error was: %v", attempt, 10, err)
-				time.Sleep(1 * time.Second)
-			}
-			return shouldRetry, err
-		})
+		// the upstream repo has image pruning code here. In my fork this is removed because of
+		// https://github.com/testcontainers/moby-ryuk/issues/41
 
 		return true
 	})
