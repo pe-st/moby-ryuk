@@ -2,7 +2,14 @@
 
 This project helps you to remove containers/networks/volumes/images by given filter after specified delay.
 
-# Usage
+## About this Fork
+
+This repo is a fork of [testcontainers/moby-ryuk](https://github.com/testcontainers/moby-ryuk)
+to address an [issue with old Docker versions](https://github.com/testcontainers/moby-ryuk/issues/41).
+
+For more information read my [blog article](https://pesche.schlau.ch/2023/01/09/ryuk-the-resource-reaper/).
+
+## Usage
 
 1. Start it:
 
